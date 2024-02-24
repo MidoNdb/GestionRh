@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class Employe {
     @Id
-    long idEmp;
+    Integer idEmp;
+    
 }
 
