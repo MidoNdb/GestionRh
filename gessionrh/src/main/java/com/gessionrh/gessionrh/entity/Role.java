@@ -1,6 +1,4 @@
 package com.gessionrh.gessionrh.entity;
-
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,11 +12,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity  
 @Data
-public class Position {
+public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
-    @Column(unique = true)
-    private String nomPasition;
-    private double salaire;
+    private String role;
 }

@@ -14,11 +14,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity  
 @Data
-public class Position {
+public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
+    private String nomUser;
     @Column(unique = true)
-    private String nomPasition;
-    private double salaire;
+    private String email;
 }

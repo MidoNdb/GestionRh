@@ -16,7 +16,7 @@ import lombok.NonNull;
 @Data
 public class Employé{
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
     @NonNull
     private String nom;
