@@ -31,7 +31,7 @@ public class Position {
     private double salaire;
 
     @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="departement",referencedColumnName="id")
+    @JoinColumn(name="departement",referencedColumnName="code")
     private Departement departement;
 
     @OneToMany(cascade=CascadeType.ALL , fetch=FetchType.EAGER,mappedBy="position")

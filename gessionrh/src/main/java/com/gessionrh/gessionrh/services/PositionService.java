@@ -2,6 +2,7 @@ package com.gessionrh.gessionrh.services;
 
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +11,7 @@ import com.gessionrh.gessionrh.entity.Position;
 
 @Service
 public class PositionService {
+    @Autowired
     private PositionRepository positionRepository;
 
     public ResponseEntity<Object> selectPotitions(){
@@ -20,10 +22,10 @@ public class PositionService {
         }
     }
 
-    public ResponseEntity<Object> insertPosition(Position position){
+    public ResponseEntity<Object> insertPosition (Position position){
         try {
             positionRepository.save(position);
-            return ResponseEntity.ok("ajoute avec success"); 
+            return ResponseEntity.ok().body("ajoute avec success"); 
         } catch (Exception e) {
             return ResponseEntity.internalServerError().body("n'est pas ajouter");
         }

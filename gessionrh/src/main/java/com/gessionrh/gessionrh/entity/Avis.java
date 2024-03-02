@@ -22,6 +22,6 @@ public class Avis {
 
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="entreprise",referencedColumnName="id")
-    private Avis avises;
+    private Entreprise entreprise;
      
 }

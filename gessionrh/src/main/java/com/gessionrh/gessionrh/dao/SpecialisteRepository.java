@@ -8,3 +8,4 @@ import com.gessionrh.gessionrh.entity.Specialite;
 public interface SpecialisteRepository extends JpaRepository<Specialite , Integer> {
     
 }
+

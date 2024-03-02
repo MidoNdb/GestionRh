@@ -1,60 +1,61 @@
 package com.gessionrh.gessionrh.services;
 
+
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.gessionrh.gessionrh.dao.EntrepriseRepo;
 
-import com.gessionrh.gessionrh.entity.Entreprise;
+import com.gessionrh.gessionrh.dao.UserRepository;
 
+import com.gessionrh.gessionrh.entity.Users;
 
 @Service
-public class EntrepriseService {
+public class UserService {
     @Autowired
-    private EntrepriseRepo entrepriseRepo;
+    private UserRepository userRepo;
 
-    public ResponseEntity<Object> selectEntreprises(){
+    public ResponseEntity<Object> selectUsers(){
         try {
-            return ResponseEntity.ok().body(entrepriseRepo.findAll()); 
+            return ResponseEntity.ok().body(userRepo.findAll()); 
         } catch (Exception e) {
             return ResponseEntity.internalServerError().body("null");
         }
     }
 
-    public ResponseEntity<Object> insertEntreprise(Entreprise entreprise){
+    public ResponseEntity<Object> insertUser(Users user){
         try {
-            entrepriseRepo.save(entreprise);
+            userRepo.save(user);
             return ResponseEntity.ok("ajoute avec success"); 
         } catch (Exception e) {
             return ResponseEntity.internalServerError().body("n'est pas ajouter");
         }
     }
 
-    public ResponseEntity<Object> updateEntreprise( Entreprise entreprise,Integer id){
-        Optional<Entreprise> optEn= entrepriseRepo.findById(id);
-        if(optEn.isPresent()){
-            Entreprise newEn=optEn.get();
-            newEn.setNom(entreprise.getNom());
+    public ResponseEntity<Object> updateUser( Users user,Integer id){
+        Optional<Users> optUser= userRepo.findById(id);
+        if(optUser.isPresent()){
+            Users newUser=optUser.get();
+            newUser.setNomUser(user.getNomUser());
+            newUser.setEmail(user.getEmail());
           
-            entrepriseRepo.save(newEn);
+            userRepo.save(newUser);
             return ResponseEntity.ok("modifier avec success"); 
         } 
         else{
             return ResponseEntity.internalServerError().body("aucun position de cet id ");
         }
     }
-    public ResponseEntity<Object> deleteEntreprise(Integer id){
-        Optional<Entreprise> optE= entrepriseRepo.findById(id);
-        if(optE.isPresent()){
-            entrepriseRepo.deleteById(id);
+    public ResponseEntity<Object> deleteUser(Integer id){
+        Optional<Users> optU= userRepo.findById(id);
+        if(optU.isPresent()){
+            userRepo.deleteById(id);
             return ResponseEntity.ok("suprimer avec success"); 
         } 
         else{
             return ResponseEntity.internalServerError().body("aucun position de cet id ");
         }
     }
-    
 }
