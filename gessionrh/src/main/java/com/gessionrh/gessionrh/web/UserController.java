@@ -10,33 +10,33 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.gessionrh.gessionrh.entity.Specialite;
-import com.gessionrh.gessionrh.services.SpecialisteService;
+import com.gessionrh.gessionrh.entity.Users;
 
+import com.gessionrh.gessionrh.services.UserService;
 @RestController
-@RequestMapping("/specialite")
-public class SpecialisteController {
+@RequestMapping("/users")
+public class UserController {
     @Autowired
-    private SpecialisteService service;
+    private UserService service;
 
     @GetMapping
-    public ResponseEntity<Object> getSpecialistes(){
-        return service.selectSpecialiste();
+    public ResponseEntity<Object> getUsers(){
+        return service.selectUsers();
     }
 
     @PostMapping("/ajouter")
-    public ResponseEntity<Object> ajouterSpecialiste( @RequestBody Specialite specialite){
-        return service.insertSpecialiste(specialite);
+    public ResponseEntity<Object> ajouterUser( @RequestBody Users user){
+        return service.insertUser(user);
     }
 
    @PutMapping("modifier/{id}")
-    public ResponseEntity<Object> modifierSpecialiste(@PathVariable Integer id, @RequestBody Specialite specialite) {
-        return service.updateSpecialiste(specialite, id);
+    public ResponseEntity<Object> modifierUser(@PathVariable Integer id, @RequestBody Users user) {
+        return service.updateUser(user, id);
     }
 
     @DeleteMapping("/suprimer/{id}")
-    public ResponseEntity<Object> suprimerSpecialiste(@PathVariable Integer id) {
-        return service.deleteSpecialiste(id);
+    public ResponseEntity<Object> suprimerUser(@PathVariable Integer id) {
+        return service.deleteUser(id);
         
     }
 }

@@ -19,14 +19,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Entity
-
 public class Specialite {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id ;
-    private String specialite;
 
+    private String specialite;
+    
     @OneToMany(cascade=CascadeType.ALL , fetch=FetchType.EAGER,mappedBy="specialite")
     private Set<Employé> employés= new HashSet<>();
     

@@ -1,5 +1,7 @@
 package com.gessionrh.gessionrh.services;
 import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import com.gessionrh.gessionrh.dao.AvisRepository;
@@ -7,6 +9,7 @@ import com.gessionrh.gessionrh.entity.Avis;
 
 @Service
 public class AvisService {
+    @Autowired
      private AvisRepository avisRepository;
     public ResponseEntity<Object> selectAvises(){
         try {
