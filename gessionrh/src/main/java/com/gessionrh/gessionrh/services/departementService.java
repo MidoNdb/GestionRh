@@ -44,7 +44,7 @@ public class DepartementService {
             return ResponseEntity.ok("modifier avec success"); 
         } 
         else{
-            return ResponseEntity.internalServerError().body("aucun position de cet id ");
+            return ResponseEntity.internalServerError().body("aucun departement de cet id ");
         }
     }
     public ResponseEntity<Object> deleteDepartement(Integer code){

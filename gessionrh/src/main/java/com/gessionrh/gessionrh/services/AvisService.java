@@ -10,7 +10,9 @@ import com.gessionrh.gessionrh.entity.Avis;
 @Service
 public class AvisService {
     @Autowired
-     private AvisRepository avisRepository;
+    private AvisRepository avisRepository;
+
+
     public ResponseEntity<Object> selectAvises(){
         try {
             return ResponseEntity.ok().body(avisRepository.findAll()); 
@@ -37,7 +39,7 @@ public class AvisService {
             return ResponseEntity.ok("modifier avec success"); 
         } 
         else{
-            return ResponseEntity.internalServerError().body("aucun position de cet id ");
+            return ResponseEntity.internalServerError().body("aucun avis de cet id ");
         }
     }
     public ResponseEntity<Object> deleteAis(Integer id){
@@ -47,7 +49,7 @@ public class AvisService {
             return ResponseEntity.ok("suprimer avec success"); 
         } 
         else{
-            return ResponseEntity.internalServerError().body("aucun position de cet id ");
+            return ResponseEntity.internalServerError().body("aucun avis de cet id ");
         }
     }
     

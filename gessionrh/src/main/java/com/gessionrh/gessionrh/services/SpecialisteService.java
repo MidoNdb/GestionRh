@@ -38,7 +38,7 @@ public class SpecialisteService {
             return ResponseEntity.ok("modifier avec success"); 
         } 
         else{
-            return ResponseEntity.internalServerError().body("aucun position de cet id ");
+            return ResponseEntity.internalServerError().body("aucun specialite de cet id ");
         }
     }
     public ResponseEntity<Object> deleteSpecialiste(Integer id){
@@ -48,7 +48,7 @@ public class SpecialisteService {
             return ResponseEntity.ok("suprimer avec success"); 
         } 
         else{
-            return ResponseEntity.internalServerError().body("aucun position de cet id ");
+            return ResponseEntity.internalServerError().body("aucun specialite de cet id ");
         }
     }
     

@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 
 
 import com.gessionrh.gessionrh.dao.UserRepository;
+import com.gessionrh.gessionrh.entity.AppUser;
 
-import com.gessionrh.gessionrh.entity.Users;
 
 @Service
 public class UserService {
@@ -25,7 +25,7 @@ public class UserService {
         }
     }
 
-    public ResponseEntity<Object> insertUser(Users user){
+    public ResponseEntity<Object> insertUser(AppUser user){
         try {
             userRepo.save(user);
             return ResponseEntity.ok("ajoute avec success"); 
@@ -34,13 +34,19 @@ public class UserService {
         }
     }
 
-    public ResponseEntity<Object> updateUser( Users user,Integer id){
-        Optional<Users> optUser= userRepo.findById(id);
+    public ResponseEntity<Object> updateUser( AppUser user,Integer id){
+        Optional<AppUser> optUser= userRepo.findById(id);
         if(optUser.isPresent()){
-            Users newUser=optUser.get();
-            newUser.setNomUser(user.getNomUser());
+            AppUser newUser=optUser.get();
+            newUser.setUsername(user.getUsername());
             newUser.setEmail(user.getEmail());
-          
+            newUser.setPassword(user.getPassword());
+            newUser.setPhoneNumber(user.getPhoneNumber());
+            newUser.setAddress(user.getAddress());
+            newUser.setNni(user.getNni());
+            newUser.setRole(user.getRole());
+            newUser.setCreatedAt(newUser.getCreatedAt());
+            newUser.setUpdatedAt(user.getUpdatedAt());
             userRepo.save(newUser);
             return ResponseEntity.ok("modifier avec success"); 
         } 
@@ -49,7 +55,7 @@ public class UserService {
         }
     }
     public ResponseEntity<Object> deleteUser(Integer id){
-        Optional<Users> optU= userRepo.findById(id);
+        Optional<AppUser> optU= userRepo.findById(id);
         if(optU.isPresent()){
             userRepo.deleteById(id);
             return ResponseEntity.ok("suprimer avec success"); 

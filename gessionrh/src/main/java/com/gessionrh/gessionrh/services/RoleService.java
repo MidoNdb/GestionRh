@@ -34,12 +34,15 @@ public class RoleService {
         Optional<Role> optRole= roleRepo.findById(id);
         if(optRole.isPresent()){
             Role newRole=optRole.get();
-            newRole.setRole(role.getRole());
+            newRole.setName(role.getName());
+            newRole.setPermissions(role.getPermissions());
+            newRole.setCreatedAt(role.getCreatedAt());
+            newRole.setUpdatedAt(role.getUpdatedAt());
             roleRepo.save(newRole);
             return ResponseEntity.ok("modifier avec success"); 
         } 
         else{
-            return ResponseEntity.internalServerError().body("aucun position de cet id ");
+            return ResponseEntity.internalServerError().body("aucun role de cet id ");
         }
     }
     public ResponseEntity<Object> deleteRole(Integer id){
@@ -49,7 +52,7 @@ public class RoleService {
             return ResponseEntity.ok("suprimer avec success"); 
         } 
         else{
-            return ResponseEntity.internalServerError().body("aucun position de cet id ");
+            return ResponseEntity.internalServerError().body("aucun role de cet id ");
         }
     }
 }

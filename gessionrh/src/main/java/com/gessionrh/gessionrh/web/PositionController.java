@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,13 +14,15 @@ import com.gessionrh.gessionrh.entity.Position;
 
 import com.gessionrh.gessionrh.services.PositionService;
 
+import jakarta.websocket.server.PathParam;
+
 @RequestMapping("/position")
 @RestController
 public class PositionController {
        @Autowired
     private PositionService service;
 
-    @GetMapping
+    @GetMapping("list")
     public ResponseEntity<Object> getPosition() {
         return service.selectPotitions();
     }
@@ -31,13 +32,13 @@ public class PositionController {
         return service.insertPosition(position);
     }
 
-    @PutMapping("modifier/{id}")
-    public ResponseEntity<Object> modifierEmloye(@PathVariable Integer id, @RequestBody Position position) {
+    @PutMapping("modifier")
+    public ResponseEntity<Object> modifierEmloye(@PathParam("id") Integer id, @RequestBody Position position) {
         return service.updatePosition(position, id);
     }
 
-    @DeleteMapping("/suprimer/{id}")
-    public ResponseEntity<Object> suprimerEmploye(@PathVariable Integer id) {
+    @DeleteMapping("/suprimer")
+    public ResponseEntity<Object> suprimerEmploye(@PathParam("id") Integer id) {
         return service.deletePosition(id);
         
     }
