@@ -43,7 +43,7 @@ public class EntrepriseService {
             return ResponseEntity.ok("modifier avec success"); 
         } 
         else{
-            return ResponseEntity.internalServerError().body("aucun position de cet id ");
+            return ResponseEntity.internalServerError().body("aucun entreprise de cet id ");
         }
     }
     public ResponseEntity<Object> deleteEntreprise(Integer id){
@@ -53,7 +53,7 @@ public class EntrepriseService {
             return ResponseEntity.ok("suprimer avec success"); 
         } 
         else{
-            return ResponseEntity.internalServerError().body("aucun position de cet id ");
+            return ResponseEntity.internalServerError().body("aucun entreprise de cet id ");
         }
     }
     

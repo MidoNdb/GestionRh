@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,13 +12,15 @@ import org.springframework.web.bind.annotation.RestController;
 import com.gessionrh.gessionrh.entity.Specialite;
 import com.gessionrh.gessionrh.services.SpecialisteService;
 
+import jakarta.websocket.server.PathParam;
+
 @RestController
 @RequestMapping("/specialite")
 public class SpecialisteController {
     @Autowired
     private SpecialisteService service;
 
-    @GetMapping
+    @GetMapping("/list")
     public ResponseEntity<Object> getSpecialistes(){
         return service.selectSpecialiste();
     }
@@ -29,13 +30,13 @@ public class SpecialisteController {
         return service.insertSpecialiste(specialite);
     }
 
-   @PutMapping("modifier/{id}")
-    public ResponseEntity<Object> modifierSpecialiste(@PathVariable Integer id, @RequestBody Specialite specialite) {
+   @PutMapping("/modifier")
+    public ResponseEntity<Object> modifierSpecialiste(@PathParam("id") Integer id, @RequestBody Specialite specialite) {
         return service.updateSpecialiste(specialite, id);
     }
 
-    @DeleteMapping("/suprimer/{id}")
-    public ResponseEntity<Object> suprimerSpecialiste(@PathVariable Integer id) {
+    @DeleteMapping("/suprimer")
+    public ResponseEntity<Object> suprimerSpecialiste(@PathParam("id") Integer id) {
         return service.deleteSpecialiste(id);
         
     }
